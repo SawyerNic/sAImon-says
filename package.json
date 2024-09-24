@@ -19,6 +19,7 @@
   "homepage": "https://github.com/SawyerNic/sAImon-says#readme",
   "dependencies": {
     "openai": "^4.61.1",
-    "serialport": "^12.0.0"
+    "serialport": "^12.0.0",
+    "sleep": "^6.3.0"
   }
 }
