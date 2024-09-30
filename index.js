@@ -34,6 +34,7 @@ const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n'}));
 // Log data received from Arduino
 port.on('data', (data) => {
     console.log(`Received from Arduino: ${data}`);
+    
 });
 
 // Send data to Arduino
