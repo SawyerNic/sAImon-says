@@ -17,17 +17,19 @@ let gameStarted = true;
 // if(currentAction == "start"){gameStarted==true;}//is replacable, just need some sort of start event to fire
 while(gameStarted){
     //go through each index in the array and check aganist current pressed button
-    for(let i=0, len=AIArray.length;i<len;i++){
-        if(AIArray[i]==currentAction && AIArray[i].contains("simon says")){ //and starts with simon says
+    for(let i=0, len=numberedCommands.length;i<len;i++){
+        let action = await waitForArduinoInput();
+        if(numberedCommands[i]==currentAction && numberedCommands[i].contains("simon says")){ //and starts with simon says
             correctArray.push("correct");
         }else{
             correctArray.push("false");
         }
+        console.log(len);
         //small delay here for a buffer somehow
-        sleep.msleep(400); //might cause the most problems
+        //sleep.msleep(400); //might cause the most problems
     }
     //done with game since all prompts were responded to
-    if(correctArray.length>=AIArray.length){
+    if(correctArray.length>=numberedCommands.length){
         gameStarted = false;
     }
 }

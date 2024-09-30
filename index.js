@@ -51,18 +51,17 @@ let gameMap = {
 
 export let currentAction;
 // Log data received from Arduino
-parser.on('data', (data) => {
-    console.log(`Received from Arduino: ${data}`);
-    currentAction = gameMap[data];
-    // Need to make function in here that sends the mapped action to a game manager
+// parser.on('data', (data) => {
+//     console.log(`Received from Arduino: ${data}`);
+//     // Need to make function in here that sends the mapped action to a game manager
     
-});
+// });
 
 export const waitForArduinoInput = () => {
     return new Promise((resolve) => {
         parser.once('data', (data) => {
             console.log(`Received from Arduino: ${data}`);
-            resolve(data.trim());
+            resolve(gameMap[data]);
         });
     });
 };
