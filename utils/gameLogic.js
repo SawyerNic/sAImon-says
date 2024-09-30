@@ -6,6 +6,10 @@ let sleep = import('sleep');
 //parse the response from the AI into a format like ["Simon Says ___", "____", "Simon Says___"]
 let AIArray = completion.choices[0].message;
 
+const numberedCommands = completion.choices[0].message.content.match(/\d+\.\s"[^"]+"/g).map(command => command.replace(/^\d+\.\s"|"$/g, ''));
+
+console.log(numberedCommands);
+
 let correctArray = []; //array to keep track of how many correct guesses, for score keeping purposes
 let gameStarted = false;
 if(currentAction == "start"){gameStarted==true;}//is replacable, just need some sort of start event to fire
