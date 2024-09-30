@@ -41,7 +41,7 @@ let gameMap = {
     "stick down": "flick stick down",
 };
 
-let currentAction;
+export let currentAction;
 // Log data received from Arduino
 parser.on('data', (data) => {
     console.log(`Received from Arduino: ${data}`);
