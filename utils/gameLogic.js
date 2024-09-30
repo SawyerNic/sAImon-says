@@ -6,23 +6,23 @@ let sleep = import('sleep');
 //parse the response from the AI into a format like ["Simon Says ___", "____", "Simon Says___"]
 let AIArray = completion.choices[0].message;
 
-const numberedCommands = completion.choices[0].message.content.match(/\d+\.\s"[^"]+"/g).map(command => command.replace(/^\d+\.\s"|"$/g, ''));
+const numberedCommands = completion.choices[0].message.content.match(/\d+\.\s"[^"]+"/g).map(command => command.replace(/^\d+\.\s"|"$/g, '').toLowerCase());
 
 console.log(numberedCommands);
 
 let correctArray = []; //array to keep track of how many correct guesses, for score keeping purposes
-let gameStarted = false;
-if(currentAction == "start"){gameStarted==true;}//is replacable, just need some sort of start event to fire
-if(gameStarted){
+let gameStarted = true;
+// if(currentAction == "start"){gameStarted==true;}//is replacable, just need some sort of start event to fire
+while(gameStarted){
     //go through each index in the array and check aganist current pressed button
     for(let i=0, len=AIArray.length;i<len;i++){
-        if(AIArray[i]==currentAction){ //and starts with simon says
+        if(AIArray[i]==currentAction && AIArray[i].contains("simon says")){ //and starts with simon says
             correctArray.push("correct");
         }else{
             correctArray.push("false");
         }
         //small delay here for a buffer somehow
-        sleep.msleep(100);
+        sleep.msleep(400); //might cause the most problems
     }
     //done with game since all prompts were responded to
     if(correctArray.length>=AIArray.length){
