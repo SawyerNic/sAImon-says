@@ -1,6 +1,8 @@
 import { currentAction } from '../index.js'; //the current pressed arduino button
 import { completion } from './gptFunctions.js';
+import { waitForArduinoInput } from '../index.js';
 let sleep = import('sleep');
+
 
 //NONE OF THIS IS OPERATIONAL, JUST A STEP UP FROM PSUEDOCODE
 //parse the response from the AI into a format like ["Simon Says ___", "____", "Simon Says___"]

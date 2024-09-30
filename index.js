@@ -58,6 +58,15 @@ parser.on('data', (data) => {
     
 });
 
+export const waitForArduinoInput = () => {
+    return new Promise((resolve) => {
+        parser.once('data', (data) => {
+            console.log(`Received from Arduino: ${data}`);
+            resolve(data.trim());
+        });
+    });
+};
+
 // Send data to Arduino
 // port.write('Hello Arduino\n', (err) => {
 //     if (err) {
