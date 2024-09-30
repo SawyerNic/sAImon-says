@@ -1,16 +1,18 @@
-//NONE OF THIS IS OPERATIONAL, JUST A STEP UP FROM PSUEDOCODE
+import { currentAction } from '../index.js'; //the current pressed arduino button
+import { completion } from './gptFunctions.js';
 let sleep = import('sleep');
+
+//NONE OF THIS IS OPERATIONAL, JUST A STEP UP FROM PSUEDOCODE
 //parse the response from the AI into a format like ["Simon Says ___", "____", "Simon Says___"]
-let GPT = import("./gptFunctions.js");
-let AIArray = [];
+let AIArray = completion.choices[0].message;
 
 let correctArray = []; //array to keep track of how many correct guesses, for score keeping purposes
-let gameStarted = false; //change based on the start event from arduino
-let currentButton;//the current pressed arduino button
+let gameStarted = false;
+if(currentAction == "start"){gameStarted==true;}//is replacable, just need some sort of start event to fire
 if(gameStarted){
     //go through each index in the array and check aganist current pressed button
     for(let i=0, len=AIArray.length;i<len;i++){
-        if(AIArray[i]==currentButton){
+        if(AIArray[i]==currentAction){ //and starts with simon says
             correctArray.push("correct");
         }else{
             correctArray.push("false");
