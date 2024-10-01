@@ -1,6 +1,7 @@
 import { currentAction } from '../index.js'; //the current pressed arduino button
 import { completion } from './gptFunctions.js';
 import { waitForArduinoInput } from '../index.js';
+import say from 'say';
 let sleep = import('sleep');
 
 
@@ -18,6 +19,9 @@ let gameStarted = true;
 while(gameStarted){
     //go through each index in the array and check aganist current pressed button
     for(let i=0, len=numberedCommands.length;i<len;i++){
+        
+        say.speak(numberedCommands[i]);
+        
         let action = await waitForArduinoInput();
         if(numberedCommands[i]==currentAction && numberedCommands[i].contains("simon says")){ //and starts with simon says
             correctArray.push("correct");

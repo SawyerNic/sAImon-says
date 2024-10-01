@@ -26,6 +26,7 @@
     "express-handlebars": "^8.0.1",
     "mongoose": "^8.7.0",
     "openai": "^4.61.1",
+    "say": "^0.16.0",
     "serialport": "^12.0.0",
     "serve-favicon": "^2.5.0",
     "sleep": "^6.3.0"
