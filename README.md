@@ -4,3 +4,8 @@ This is a project for my New Media Interactive Development capstone class. It is
 Running the project requires an Open AI API key.
 
 The game logic and API functions are in the Utils folder.
+
+Authors: Jaaron Gunport, Blessing Okogeri, Sawyer Nicastro
+
+Run by this command: Node utils/gameLogic.js
+
