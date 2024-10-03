@@ -34,27 +34,27 @@ void loop() {
     delay(500);
   }
   if(leftPressed == HIGH){
-    Serial.println("left button pressed");
+    Serial.println("press the left button.");
     delay(500);
   }
   if(rightPressed == HIGH){
-    Serial.println("right button pressed");
+    Serial.println("press the right button.");
     delay(500);
   }
   if(joystickXAngle<400){
-    Serial.println("stick left");
+    Serial.println("flick stick left.");
     delay(500);
   }
   if(joystickYAngle<400){
-    Serial.println("stick down");
+    Serial.println("flick stick down.");
     delay(500);
   }
   if(joystickYAngle>700){
-    Serial.println("stick up");
+    Serial.println("flick stick up.");
     delay(500);
   }
   if(joystickXAngle>700){
-    Serial.println("stick right");
+    Serial.println("flick stick right.");
     delay(500);
   }
 }

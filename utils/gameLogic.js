@@ -25,7 +25,9 @@ while(gameStarted){
         say.speak(numberedCommands[i]);
         
         let action = await waitForArduinoInput();
-        if(numberedCommands[i]==("simon says " + action)){ //and starts with simon says
+
+        console.log(numberedCommands[i], ("simon says " + action))
+        if(numberedCommands[i].includes("simon says") && numberedCommands[i].includes(action)){ //and starts with simon says
             correctArray.push("correct");
         }else{
             correctArray.push("false");

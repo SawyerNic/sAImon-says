@@ -61,7 +61,7 @@ export const waitForArduinoInput = () => {
     return new Promise((resolve) => {
         parser.once('data', (data) => {
             console.log(`Received from Arduino: ${data}`);
-            resolve(gameMap[data]);
+            resolve(data);
         });
     });
 };
