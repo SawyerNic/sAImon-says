@@ -2,10 +2,12 @@ import { currentAction } from '../index.js'; //the current pressed arduino butto
 import { completion } from './gptFunctions.js';
 import { waitForArduinoInput } from '../index.js';
 import say from 'say';
-let sleep = import('sleep');
 
+//from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics/wait
+function msleep(n) {
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, n);
+}
 
-//NONE OF THIS IS OPERATIONAL, JUST A STEP UP FROM PSUEDOCODE
 //parse the response from the AI into a format like ["Simon Says ___", "____", "Simon Says___"]
 let AIArray = completion.choices[0].message;
 
@@ -23,14 +25,16 @@ while(gameStarted){
         say.speak(numberedCommands[i]);
         
         let action = await waitForArduinoInput();
-        if(numberedCommands[i]==currentAction && numberedCommands[i].contains("simon says")){ //and starts with simon says
+
+        console.log(numberedCommands[i], ("simon says " + action))
+        if(numberedCommands[i].includes("simon says") && numberedCommands[i].includes(action)){ //and starts with simon says
             correctArray.push("correct");
         }else{
             correctArray.push("false");
         }
-        console.log(len);
+        //console.log(len);
         //small delay here for a buffer somehow
-        //sleep.msleep(400); //might cause the most problems
+        msleep(600); //might cause the most problems
     }
     //done with game since all prompts were responded to
     if(correctArray.length>=numberedCommands.length){
@@ -40,4 +44,4 @@ while(gameStarted){
 //we leave if the game ends so show the score
 const counts = {};
 correctArray.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
-console.log(`Good job, you got ${counts["correct"]} correct and ${counts["false"]} wrong.`);
+console.log(`Good job, you got ${counts["correct"] ? counts["correct"] : "0"} correct and ${counts["false"]} wrong.`);

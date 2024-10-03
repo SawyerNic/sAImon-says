@@ -16,4 +16,4 @@ export const completion = await openai.chat.completions.create({
     ],
 });
 
-console.log(completion.choices[0].message);
+//console.log(completion.choices[0].message);
