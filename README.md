@@ -9,3 +9,4 @@ Authors: Jaaron Gunport, Blessing Okogeri, Sawyer Nicastro
 
 Run by this command: Node utils/gameLogic.js
 
+![Alt text](IMG_1820.jpg "Image Title")
