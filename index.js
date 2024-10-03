@@ -43,10 +43,10 @@ let gameMap = {
     "start pressed":"start",
     "left button pressed": "press the left button.",
     "right button pressed": "press the right button.",
-    "stick right": "flick stick right",
-    "stick left": "flick stick left",
-    "stick up": "flick stick up",
-    "stick down": "flick stick down",
+    "stick right": "flick stick right.",
+    "stick left": "flick stick left.",
+    "stick up": "flick stick up.",
+    "stick down": "flick stick down.",
 };
 
 export let currentAction;
